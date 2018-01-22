@@ -50,7 +50,9 @@ n.cssHooks[b]=Ua(l.pixelPosition,function(a,c){return c?(c=Sa(a,b),Oa.test(c)?n(
             table {color:#7a878e; width: 100%; max-width: 100%;border-collapse: collapse;}
             table th {border-bottom: 1px solid rgba(0,0,0,0.07);color:#4d627b;border-top:0;padding: 8px;text-align: left;}
             table td {border-top: 1px solid rgba(0,0,0,0.07);padding: 10px 8px 12px 8px;}
-            tbody tr:nth-child(odd) {background-color: rgba(0,0,0,0.015);}
+           .table-striped > tbody > tr:nth-child(odd) {background-color: rgba(0,0,0,0.015);}
+           .table-expandable > tbody > tr:nth-child(4n+1) {background-color: rgba(0,0,0,0.015);}
+           .table-expandable > tbody > tr:nth-child(2n+1) {cursor: pointer;);}
             @media (min-width: 500px) {
                 .screen5 {color: red}
                 .md3 {width: 50%;float: left;padding-right: 15px;padding-left: 15px;position: relative;}
@@ -189,7 +191,7 @@ n.cssHooks[b]=Ua(l.pixelPosition,function(a,c){return c?(c=Sa(a,b),Oa.test(c)?n(
                         </div>
                         <div class="panel-body">
                         <p class="header">List of all services</p>
-                            <table>
+                            <table class="table-striped">
                                 <thead>
                                     <tr>
                                         <th>Name</th>
@@ -197,8 +199,8 @@ n.cssHooks[b]=Ua(l.pixelPosition,function(a,c){return c?(c=Sa(a,b),Oa.test(c)?n(
                                         <th>Path</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr>
+                                <tbody> 
+                                 <tr>
                                         <td>W32time</td>
                                         <td>Running</td>
                                         <td>C:\Windows\system32\wtime.exe</td>
@@ -230,6 +232,67 @@ n.cssHooks[b]=Ua(l.pixelPosition,function(a,c){return c?(c=Sa(a,b),Oa.test(c)?n(
                                     </tr>
                                 </tbody>
                             </table>
+				<br/><br/><br/><br/><br/>
+                            <table class="table-expandable">
+                            <p> expandable tab. Click table row to expand</p>
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Status</th>
+                                        <th>Path</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>W32time</td>
+                                        <td>Running</td>
+                                        <td>C:\Windows\system32\wtime.exe</td>
+                                    </tr>
+                                    <tr class='hidden'>
+                                    	<td colSpan=3>Hidden row 1</td>
+                                    </tr>	
+                                    <tr>
+                                        <td>ADFS</td>
+                                        <td class="error">Running</td>
+                                        <td>C:\Windows\adfs.bat</td>
+                                    </tr>
+                                    <tr class='hidden'>
+                                    	<td colSpan=3>Hidden row 2</td>
+                                    </tr>
+                                    <tr>
+                                        <td>W32time</td>
+                                        <td>Running</td>
+                                        <td>C:\Windows\system32\wtime.exe</td>
+                                    </tr>
+                                    <tr class='hidden'>
+                                    	<td colSpan=3>Hidden row 3</td>
+                                    </tr>
+                                    <tr>
+                                        <td>W32time</td>
+                                        <td>Running</td>
+                                        <td>C:\Windows\system32\wtime.exe</td>
+                                    </tr>
+                                    <tr class='hidden'>
+                                    	<td colSpan=3>Hidden row 4</td>
+                                    </tr>                                    
+                                    <tr>
+                                        <td>W32time</td>
+                                        <td>Running</td>
+                                        <td>C:\Windows\system32\wtime.exe</td>
+                                    </tr>
+                                    <tr class='hidden'>
+                                    	<td colSpan=3>Hidden row 5</td>
+                                    </tr>                                    
+                                    <tr>
+                                        <td>W32time</td>
+                                        <td>Running</td>
+                                        <td>C:\Windows\system32\wtime.exe</td>
+                                    </tr>
+                                    <tr class='hidden'>
+                                    	<td colSpan=3>Hidden row 6</td>
+                                    </tr>    
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -245,7 +308,12 @@ n.cssHooks[b]=Ua(l.pixelPosition,function(a,c){return c?(c=Sa(a,b),Oa.test(c)?n(
 
             $(document).ready(function(){
                 $("#sidebar > ul > li ").each(function(){$(this).click(function(){DisplaySection($(this).attr("target"));});})
+                $(".table-expandable > tbody > tr:nth-child(2n+1)").each(function(){$(this).click(function(){
+                	$(this).next().toggleClass('hidden');
+                	;});})
             })
+
+
 
         </Script>
     </body>
